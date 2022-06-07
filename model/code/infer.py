@@ -26,6 +26,8 @@ from uie_predictor import UIEPredictor
 def model_fn(model_dir):
     args = parse_args()
     args.model_path_prefix = os.path.join(model_dir, 'inference')
+    args.position_prob = 0.5
+    args.max_seq_len = 512
     args.device = 'cpu'
     args.schema = ['法院', {'原告': '委托代理人'}, {'被告': '委托代理人'}]
     predictor = UIEPredictor(args)
@@ -62,17 +64,17 @@ def parse_args():
 #         type=str,
 #         required=True,
 #         help="The path prefix of inference model to be used.", )
-    parser.add_argument(
-        "--position_prob",
-        default=0.5,
-        type=float,
-        help="Probability threshold for start/end index probabiliry.", )
-    parser.add_argument(
-        "--max_seq_len",
-        default=512,
-        type=int,
-        help="The maximum input sequence length. Sequences longer than this will be split automatically.",
-    )
+#     parser.add_argument(
+#         "--position_prob",
+#         default=0.5,
+#         type=float,
+#         help="Probability threshold for start/end index probabiliry.", )
+#     parser.add_argument(
+#         "--max_seq_len",
+#         default=512,
+#         type=int,
+#         help="The maximum input sequence length. Sequences longer than this will be split automatically.",
+#     )
     args = parser.parse_args()
     return args
 
