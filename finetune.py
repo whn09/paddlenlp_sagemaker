@@ -148,10 +148,10 @@ def do_train():
                 tic_train = time.time()
     
     # Convert to static graph with specific input description
-    model_to_save = model._layers if isinstance(
-        model, paddle.DataParallel) else model
-    model_to_save = paddle.jit.to_static(
-        model_to_save,
+    model = UIE.from_pretrained(os.path.join(args.save_dir, "model_best"))
+    model.eval()
+    model = paddle.jit.to_static(
+        model,
         input_spec=[
             paddle.static.InputSpec(
                 shape=[None, None], dtype="int64", name='input_ids'),
@@ -164,7 +164,7 @@ def do_train():
         ])
     # Save in static graph model.
     save_path = os.path.join(args.save_dir, "inference")
-    paddle.jit.save(model_to_save, save_path)
+    paddle.jit.save(model, save_path)
 
 
 if __name__ == "__main__":
