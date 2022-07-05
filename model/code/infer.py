@@ -26,7 +26,8 @@ from uie_predictor import UIEPredictor
 def model_fn(model_dir):
     args = parse_args()
     args.model_path_prefix = os.path.join(model_dir, 'inference')
-    args.device = 'cpu'
+#     args.device = 'cpu'
+    args.device = 'gpu'
     args.schema = ['法院', {'原告': '委托代理人'}, {'被告': '委托代理人'}]
     predictor = UIEPredictor(args)
     return predictor
@@ -68,6 +69,11 @@ def parse_args():
         type=float,
         help="Probability threshold for start/end index probabiliry.", )
     parser.add_argument(
+        "--use_fp16",
+        action='store_true',
+        help="Whether to use fp16 inference, only takes effect when deploying on gpu.",
+    )
+    parser.add_argument(
         "--max_seq_len",
         default=512,
         type=int,
@@ -93,6 +99,6 @@ if __name__ == "__main__":
         '"北京市海淀区人民法院\n民事判决书\n(199x)建初字第xxx号\n原告：张三。\n委托代理人李四，北京市 A律师事务所律师。\n被告：B公司，法定代表人王五，开发公司总经理。\n委托代理人赵六，北京市 C律师事务所律师。"',
         '原告赵六，2022年5月29日生\n委托代理人孙七，深圳市C律师事务所律师。\n被告周八，1990年7月28日出生\n委托代理人吴九，山东D律师事务所律师'
     ]
-    model = model_fn('../../checkpoint')
+    model = model_fn('../')
     result = predict_fn(texts, model)
     print(result)
