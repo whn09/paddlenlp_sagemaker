@@ -1,4 +1,4 @@
--i https://opentuna.cn/pypi/web/simple/
+#-i https://opentuna.cn/pypi/web/simple/
 paddlepaddle
 #paddlepaddle-gpu
 paddlenlp
