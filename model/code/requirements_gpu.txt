@@ -6,3 +6,4 @@ onnx
 #onnxruntime
 onnxconverter_common
 onnxruntime-gpu
+nvgpu

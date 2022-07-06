@@ -26,8 +26,8 @@ from uie_predictor import UIEPredictor
 def model_fn(model_dir):
     args = parse_args()
     args.model_path_prefix = os.path.join(model_dir, 'inference')
-#     args.device = 'cpu'
-    args.device = 'gpu'
+    args.device = 'cpu'
+#     args.device = 'gpu'
     args.schema = ['法院', {'原告': '委托代理人'}, {'被告': '委托代理人'}]
     predictor = UIEPredictor(args)
     return predictor
@@ -68,11 +68,11 @@ def parse_args():
         default=0.5,
         type=float,
         help="Probability threshold for start/end index probabiliry.", )
-    parser.add_argument(
-        "--use_fp16",
-        action='store_true',
-        help="Whether to use fp16 inference, only takes effect when deploying on gpu.",
-    )
+#     parser.add_argument(
+#         "--use_fp16",
+#         action='store_true',
+#         help="Whether to use fp16 inference, only takes effect when deploying on gpu.",
+#     )
     parser.add_argument(
         "--max_seq_len",
         default=512,
