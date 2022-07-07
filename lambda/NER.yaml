@@ -10,7 +10,7 @@ Resources:
       CodeUri: .
       Description: ''
       MemorySize: 128
-      Timeout: 3
+      Timeout: 10
       Role: 'arn:aws-cn:iam::343958593302:role/service-role/NER-role-ed94vl76'
       Events:
         Api1:
