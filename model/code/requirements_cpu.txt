@@ -1,8 +1,5 @@
 #-i https://opentuna.cn/pypi/web/simple/
 paddlepaddle
-#paddlepaddle-gpu
 paddlenlp
 onnx
 onnxruntime
-#onnxconverter_common
-#onnxruntime-gpu

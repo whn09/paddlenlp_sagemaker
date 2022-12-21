@@ -28,7 +28,7 @@ def model_fn(model_dir):
     args.model_path_prefix = os.path.join(model_dir, 'inference')
 #     args.device = 'cpu'
     args.device = 'gpu'
-    args.schema = ['法院', {'原告': '委托代理人'}, {'被告': '委托代理人'}]
+    args.schema = ['地址', '银行卡号', '电子邮箱', '姓名', '手机号码', '电话号码', '身份证号']
     predictor = UIEPredictor(args)
     return predictor
 
@@ -96,8 +96,7 @@ def parse_args():
 
 if __name__ == "__main__":
     texts = [
-        '"北京市海淀区人民法院\n民事判决书\n(199x)建初字第xxx号\n原告：张三。\n委托代理人李四，北京市 A律师事务所律师。\n被告：B公司，法定代表人王五，开发公司总经理。\n委托代理人赵六，北京市 C律师事务所律师。"',
-        '原告赵六，2022年5月29日生\n委托代理人孙七，深圳市C律师事务所律师。\n被告周八，1990年7月28日出生\n委托代理人吴九，山东D律师事务所律师'
+        '我叫王五，男，30岁，生活在中国北京，我的身份证号是110111199201010000，手机号是13912345678，电话号码是010-88888888，您可以给我发邮件wangwu@qq.com，我的银行卡号是6288888888888888.'
     ]
     model = model_fn('../')
     result = predict_fn(texts, model)
