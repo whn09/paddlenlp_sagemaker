@@ -28,7 +28,7 @@ def model_fn(model_dir):
     args.model_path_prefix = os.path.join(model_dir, 'inference')
 #     args.device = 'cpu'
     args.device = 'gpu'
-    args.schema = ['地址', '银行卡号', '电子邮箱', '姓名', '手机号码', '电话号码', '身份证号']
+    args.schema = ['地址', '银行卡号', '电子邮箱', '姓名', '手机号码', '电话号码', '身份证号', '护照号']
     predictor = UIEPredictor(args)
     return predictor
 
