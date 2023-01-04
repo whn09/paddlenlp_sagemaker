@@ -1,7 +1,7 @@
 #-i https://opentuna.cn/pypi/web/simple/
-paddlepaddle-gpu
-paddlenlp
-onnx
-onnxconverter_common
-onnxruntime-gpu
-nvgpu
+paddlepaddle-gpu==2.3.1
+paddlenlp==2.3.4
+onnx==1.12.0
+onnxconverter_common==1.9.0
+onnxruntime-gpu==1.12.0
+nvgpu==0.9.0
