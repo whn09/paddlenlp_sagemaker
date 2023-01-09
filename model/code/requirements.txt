@@ -1,4 +1,0 @@
-paddlepaddle
-paddlenlp
-onnx
-onnxruntime
